@@ -72,8 +72,20 @@ Nest is an MIT-licensed open source project. It can grow thanks to the sponsors 
 
 Nest is [MIT licensed](LICENSE).
 
+## Quick start
 
+Subindo o projeto pela primeira vez
 
+- Renomeie o arquivo .env.example para .enc
+- rode o comando docker-compose up --build
+
+## Problemas
+
+Dependencias não instaladas no container
+
+- docker-compose build --no-cache && docker-compose up
+
+## Planejamento
 
 4 entidades
 
@@ -104,4 +116,3 @@ presenter (serializer)
 services
 entitys (model)
 controller
-
