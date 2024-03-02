@@ -71,3 +71,36 @@ Nest is an MIT-licensed open source project. It can grow thanks to the sponsors 
 ## License
 
 Nest is [MIT licensed](LICENSE).
+
+
+
+
+4 entidades
+
+- user (base user) belongs_to saas
+  - name
+  - email
+  - roles
+- saas (multitenancy) saas has_many users, chargepoints, has_many connectors throught chargepoint
+  - cnpj
+  - endereco
+  - razao social
+  - ...
+- customer:
+
+  - oauth
+  - payment_information
+
+- chargepoint (ponto de recarga) belong_to saas, has_many connectors
+  - location (geolocalizacao)
+  - tipo (potencia)
+  - disponibilidade (manutencao)
+- chargepoint_group has_many chagepoint
+- connectors belogs_to chargepoint
+  - disponibilidade
+
+repository
+presenter (serializer)
+services
+entitys (model)
+controller
