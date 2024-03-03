@@ -19,6 +19,7 @@ services:
     volumes:
       - .:/app
       - /app/node_modules
+    command: npm run start:dev
   postgres:
     image: postgres:latest
     container_name: postgres
