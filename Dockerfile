@@ -14,4 +14,4 @@ COPY . /app
 
 RUN npm run build
 
-EXPOSE 3001
+EXPOSE ${API_PORT}
