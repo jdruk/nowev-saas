@@ -4,21 +4,12 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { UsersModule } from './users/users.module';
 import { User } from './users/entities/user.entity';
-import { typeOrmConfigAsync } from './config/typeorm.config';
-import { ConfigModule } from '@nestjs/config';
+import { dbDataSource } from './config/data.source';
 
 @Module({
   imports: [
-    ConfigModule.forRoot({
-      isGlobal: true,
-    }),
-    TypeOrmModule.forRootAsync({
-      imports: [ConfigModule],
-      useFactory: async () => ({
-        ...typeOrmConfigAsync,
-      }),
-    }),
     TypeOrmModule.forFeature([User]),
+    TypeOrmModule.forRoot(dbDataSource),
     UsersModule,
   ],
   controllers: [AppController],
