@@ -6,7 +6,8 @@ RUN mkdir -p /app
 
 COPY package.json /app
 
-RUN npm cache clean --force && \
+RUN apk add --no-cache bash && \
+    npm cache clean --force && \
     rm -rf node_modules package-lock.json && \
     npm install --frozen-lockfile
 
