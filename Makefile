@@ -31,6 +31,7 @@ migration_run:
 
 generate_migration:
 	docker exec -it $(APP_NAME) npx ts-node ./node_modules/typeorm/cli.js migration:generate -d src/config/data.source.ts -n $(NAME)
+	docker exec -it api npx ts-node ./node_modules/typeorm/cli.js migration:generate -d src/config/data.source.ts src/migrations/AddSaasColumn
 
 migration_revert:
 	docker exec -it $(APP_NAME) npx ts-node ./node_modules/typeorm/cli.js migration:revert -d src/config/data.source.ts
