@@ -2,9 +2,12 @@ import {
   Column,
   CreateDateColumn,
   Entity,
+  JoinColumn,
+  ManyToOne,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
+import { Saas } from '../../saas/entities/saas.entity';
 
 @Entity()
 export class User {
@@ -18,8 +21,16 @@ export class User {
   email: string;
 
   @CreateDateColumn()
-  created_at: Date;
+  createdAt: Date;
 
   @UpdateDateColumn()
-  updated_at: Date;
+  updatedAt: Date;
+
+  @Column()
+  saasId: number;
+
+  @ManyToOne(() => Saas, (saas) => saas.users)
+  @JoinColumn({ name: 'saasId' })
+  saas: Saas;
 }
+
