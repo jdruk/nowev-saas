@@ -34,4 +34,8 @@ export class UsersRepository extends Repository<User> {
   async removeUser(id: number): Promise<void> {
     await this.delete(id);
   }
+
+  async findOneByEmail(email: string): Promise<User> {
+    return this.findOneBy({ email: email });      
+  }
 }

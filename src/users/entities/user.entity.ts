@@ -32,5 +32,8 @@ export class User {
   @ManyToOne(() => Saas, (saas) => saas.users)
   @JoinColumn({ name: 'saasId' })
   saas: Saas;
+
+  @Column()
+  password: string;
 }
 
