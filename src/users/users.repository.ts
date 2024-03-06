@@ -10,29 +10,28 @@ export class UsersRepository extends Repository<User> {
     super(User, dataSource.createEntityManager());
   }
 
-  createUser(createUserDto: CreateUserDto): Promise<User> {
+  async createUser(createUserDto: CreateUserDto): Promise<User> {
     const user = this.create(createUserDto);
-    return this.save(user);
+    return await this.save(user);
   }
-
-  findAll(): Promise<User[]> {
-    return this.find();
+  
+  async findAll(): Promise<User[]> {
+    return await this.find();
   }
-
-  findOneUser(id: number): Promise<User> {
-    return this.findOneBy({ id: id });
+  
+  async findOneUser(id: number): Promise<User> {
+    return await this.findOneBy({ id: id });
   }
-
-  updateUser(id: number, updateUserDto: UpdateUserDto): Promise<User> {
+  
+  async updateUser(id: number, updateUserDto: UpdateUserDto): Promise<User> {
     const { name, email } = updateUserDto;
-    const updated_at = new Date();
-    this.update(id, { name, email, updated_at });
-
-    return this.findOneBy({ id: id });
+    const updatedAt = new Date();
+    await this.update(id, { name, email, updatedAt });
+  
+    return await this.findOneBy({ id: id });
   }
-
-  removeUser(id: number): Promise<void> {
-    this.delete(id);
-    return;
+  
+  async removeUser(id: number): Promise<void> {
+    await this.delete(id);
   }
 }
