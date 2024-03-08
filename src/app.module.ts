@@ -6,6 +6,7 @@ import { UsersModule } from './users/users.module';
 import { User } from './users/entities/user.entity';
 import { dbDataSource } from './config/data.source';
 import { SaasModule } from './saas/saas.module';
+import { ChargingStationGroupModule } from './charging-station-group/charging-station-group.module';
 
 @Module({
   imports: [
@@ -13,6 +14,7 @@ import { SaasModule } from './saas/saas.module';
     TypeOrmModule.forRoot(dbDataSource),
     UsersModule,
     SaasModule,
+    ChargingStationGroupModule,
   ],
   controllers: [AppController],
   providers: [AppService],
