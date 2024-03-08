@@ -7,6 +7,7 @@ import { User } from './users/entities/user.entity';
 import { dbDataSource } from './config/data.source';
 import { SaasModule } from './saas/saas.module';
 import { ChargingStationGroupModule } from './charging-station-group/charging-station-group.module';
+import { ChargingStationModule } from './charging-station/charging-station.module';
 
 @Module({
   imports: [
@@ -15,6 +16,7 @@ import { ChargingStationGroupModule } from './charging-station-group/charging-st
     UsersModule,
     SaasModule,
     ChargingStationGroupModule,
+    ChargingStationModule,
   ],
   controllers: [AppController],
   providers: [AppService],

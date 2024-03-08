@@ -4,10 +4,12 @@ import {
     Entity,
     JoinColumn,
     ManyToOne,
+    OneToMany,
     PrimaryGeneratedColumn,
     UpdateDateColumn,
   } from 'typeorm';
   import { Saas } from '../../saas/entities/saas.entity';
+import { ChargingStation } from '../../charging-station/entities/charging-station.entity';
   
   @Entity()
   export class ChargingStationGroup {
@@ -29,6 +31,9 @@ import {
     @ManyToOne(() => Saas, (saas) => saas.chargingStationGroups)
     @JoinColumn({ name: 'saasId' })
     saas: Saas;
+
+    @OneToMany(() => ChargingStation, chargingStation => chargingStation.chargingStationGroup)
+    chargingStations: ChargingStation[];
   }
   
   
