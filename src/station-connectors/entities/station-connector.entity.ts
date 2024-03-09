@@ -7,7 +7,7 @@ import {
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
-import { ChargingStation } from '../../charging-station/entities/charging-station.entity';
+import { Station } from '../../station/entities/station.entity';
   
 @Entity()
 export class StationConnector {
@@ -24,10 +24,10 @@ export class StationConnector {
   updatedAt: Date;
 
   @Column()
-  chargingStationId: number;
+  stationId: number;
 
-  @ManyToOne(() => ChargingStation, chargingStation => chargingStation.stationConnectors)
-  @JoinColumn({ name: 'chargingStationId' })
-  chargingStation: ChargingStation;
+  @ManyToOne(() => Station, station => station.stationConnectors)
+  @JoinColumn({ name: 'stationId' })
+  station: Station;
 }
 

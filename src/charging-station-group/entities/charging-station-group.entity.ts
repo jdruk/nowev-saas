@@ -9,7 +9,7 @@ import {
     UpdateDateColumn,
   } from 'typeorm';
   import { Saas } from '../../saas/entities/saas.entity';
-import { ChargingStation } from '../../charging-station/entities/charging-station.entity';
+import { Station } from '../../station/entities/station.entity';
   
   @Entity()
   export class ChargingStationGroup {
@@ -32,8 +32,8 @@ import { ChargingStation } from '../../charging-station/entities/charging-statio
     @JoinColumn({ name: 'saasId' })
     saas: Saas;
 
-    @OneToMany(() => ChargingStation, chargingStation => chargingStation.chargingStationGroup)
-    chargingStations: ChargingStation[];
+    @OneToMany(() => Station, station => station.chargingStationGroup)
+    stations: Station[];
   }
   
   
