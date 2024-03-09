@@ -85,34 +85,4 @@ Dependencias não instaladas no container
 
 - docker-compose build --no-cache && docker-compose up
 
-## Planejamento
-
-4 entidades
-
-- user (base user) belongs_to saas
-  - name
-  - email
-  - roles
-- saas (multitenancy) saas has_many users, chargepoints, has_many connectors throught chargepoint
-  - cnpj
-  - endereco
-  - razao social
-  - ...
-- customer:
-
-  - oauth
-  - payment_information
-
-- chargepoint (ponto de recarga) belong_to saas, has_many connectors
-  - location (geolocalizacao)
-  - tipo (potencia)
-  - disponibilidade (manutencao)
-- chargepoint_group has_many chagepoint
-- connectors belogs_to chargepoint
-  - disponibilidade
-
-repository
-presenter (serializer)
-services
-entitys (model)
-controller
+https://lucid.app/lucidchart/9153ae76-d9de-4141-80ec-2b3d4f638820/edit?viewport_loc=-113%2C7%2C2219%2C997%2C0_0&invitationId=inv_21131612-4fc0-4dd8-87d6-580d3f3a7abb
