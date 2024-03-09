@@ -86,3 +86,7 @@ Dependencias não instaladas no container
 - docker-compose build --no-cache && docker-compose up
 
 https://lucid.app/lucidchart/9153ae76-d9de-4141-80ec-2b3d4f638820/edit?viewport_loc=-113%2C7%2C2219%2C997%2C0_0&invitationId=inv_21131612-4fc0-4dd8-87d6-580d3f3a7abb
+
+
+# API DOCUMENTATION
+localhost:3000/api
