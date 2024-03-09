@@ -6,6 +6,6 @@ export class AuthService {
   constructor(private usersService: UsersService) {}
 
   async signIn(email: string): Promise<any> {
-    return await this.usersService.findOneByEmail(email);;
+    return await this.usersService.findOneByEmail(email);
   }
 }
