@@ -8,7 +8,7 @@ import {
     PrimaryGeneratedColumn,
     UpdateDateColumn,
   } from 'typeorm';
-  import { ChargingStationGroup } from '../../charging-station-group/entities/charging-station-group.entity';
+  import { StationGroup } from '../../station-group/entities/station-group.entity';
   import { StationConnector } from '../../station-connectors/entities/station-connector.entity';
 
   @Entity()
@@ -26,11 +26,11 @@ import {
     updatedAt: Date;
   
     @Column()
-    chargingStationGroupId: number;
+    stationGroupId: number;
   
-    @ManyToOne(() => ChargingStationGroup, chargingStationGroup => chargingStationGroup.stations)
-    @JoinColumn({ name: 'chargingStationGroupId' })
-    chargingStationGroup: ChargingStationGroup;
+    @ManyToOne(() => StationGroup, stationGroup => stationGroup.stations)
+    @JoinColumn({ name: 'stationGroupId' })
+    stationGroup: StationGroup;
 
     @OneToMany(() => StationConnector, stationConnector => stationConnector.station)
     stationConnectors: StationConnector[];

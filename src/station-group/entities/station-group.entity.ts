@@ -12,7 +12,7 @@ import {
 import { Station } from '../../station/entities/station.entity';
   
   @Entity()
-  export class ChargingStationGroup {
+  export class StationGroup {
     @PrimaryGeneratedColumn()
     id: number;
   
@@ -28,11 +28,11 @@ import { Station } from '../../station/entities/station.entity';
     @Column()
     saasId: number;
   
-    @ManyToOne(() => Saas, (saas) => saas.chargingStationGroups)
+    @ManyToOne(() => Saas, (saas) => saas.stationGroups)
     @JoinColumn({ name: 'saasId' })
     saas: Saas;
 
-    @OneToMany(() => Station, station => station.chargingStationGroup)
+    @OneToMany(() => Station, station => station.stationGroup)
     stations: Station[];
   }
   

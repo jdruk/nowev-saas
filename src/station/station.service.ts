@@ -5,22 +5,22 @@ import { UpdateStationDto } from './dto/update-station.dto';
 @Injectable()
 export class StationService {
   create(createStationDto: CreateStationDto) {
-    return 'This action adds a new chargingStation';
+    return 'This action adds a new Station';
   }
 
   findAll() {
-    return `This action returns all chargingStation`;
+    return `This action returns all Station`;
   }
 
   findOne(id: number) {
-    return `This action returns a #${id} chargingStation`;
+    return `This action returns a #${id} Station`;
   }
 
   update(id: number, updateStationDto: UpdateStationDto) {
-    return `This action updates a #${id} chargingStation`;
+    return `This action updates a #${id} Station`;
   }
 
   remove(id: number) {
-    return `This action removes a #${id} chargingStation`;
+    return `This action removes a #${id} Station`;
   }
 }
