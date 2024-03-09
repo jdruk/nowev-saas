@@ -10,7 +10,7 @@ import {
 import { ChargingStation } from '../../charging-station/entities/charging-station.entity';
   
 @Entity()
-export class ChargingConnector {
+export class StationConnector {
   @PrimaryGeneratedColumn()
   id: number;
 
@@ -26,7 +26,7 @@ export class ChargingConnector {
   @Column()
   chargingStationId: number;
 
-  @ManyToOne(() => ChargingStation, chargingStation => chargingStation.chargingConnectors)
+  @ManyToOne(() => ChargingStation, chargingStation => chargingStation.stationConnectors)
   @JoinColumn({ name: 'chargingStationId' })
   chargingStation: ChargingStation;
 }

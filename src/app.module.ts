@@ -8,7 +8,7 @@ import { dbDataSource } from './config/data.source';
 import { SaasModule } from './saas/saas.module';
 import { ChargingStationGroupModule } from './charging-station-group/charging-station-group.module';
 import { ChargingStationModule } from './charging-station/charging-station.module';
-import { ChargingConnectorsModule } from './charging-connectors/charging-connectors.module';
+import { StationConnectorsModule } from './station-connectors/station-connectors.module';
 
 @Module({
   imports: [
@@ -18,7 +18,7 @@ import { ChargingConnectorsModule } from './charging-connectors/charging-connect
     SaasModule,
     ChargingStationGroupModule,
     ChargingStationModule,
-    ChargingConnectorsModule,
+    StationConnectorsModule,
   ],
   controllers: [AppController],
   providers: [AppService],

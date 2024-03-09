@@ -9,7 +9,7 @@ import {
     UpdateDateColumn,
   } from 'typeorm';
   import { ChargingStationGroup } from '../../charging-station-group/entities/charging-station-group.entity';
-  import { ChargingConnector } from '../../charging-connectors/entities/charging-connector.entity';
+  import { StationConnector } from '../../station-connectors/entities/station-connector.entity';
 
   @Entity()
   export class ChargingStation {
@@ -32,8 +32,8 @@ import {
     @JoinColumn({ name: 'chargingStationGroupId' })
     chargingStationGroup: ChargingStationGroup;
 
-    @OneToMany(() => ChargingConnector, chargingConnector => chargingConnector.chargingStation)
-    chargingConnectors: ChargingConnector[];
+    @OneToMany(() => StationConnector, stationConnector => stationConnector.chargingStation)
+    stationConnectors: StationConnector[];
   }
   
   
