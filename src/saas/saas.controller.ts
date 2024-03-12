@@ -2,11 +2,13 @@ import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/commo
 import { SaasService } from './saas.service';
 import { CreateSaasDto } from './dto/create-saas.dto';
 import { UpdateSaasDto } from './dto/update-saas.dto';
+import { Public } from '../decorators/public.decorator';
 
 @Controller('saas')
 export class SaasController {
   constructor(private readonly saasService: SaasService) {}
 
+  @Public()
   @Post()
   create(@Body() createSaasDto: CreateSaasDto) {
     return this.saasService.create(createSaasDto);
