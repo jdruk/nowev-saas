@@ -9,6 +9,7 @@ import { SaasModule } from './saas/saas.module';
 import { StationGroupModule } from './station-group/station-group.module';
 import { StationModule } from './station/station.module';
 import { StationConnectorsModule } from './station-connectors/station-connectors.module';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -19,6 +20,7 @@ import { StationConnectorsModule } from './station-connectors/station-connectors
     StationGroupModule,
     StationModule,
     StationConnectorsModule,
+    AuthModule,
   ],
   controllers: [AppController],
   providers: [AppService],
