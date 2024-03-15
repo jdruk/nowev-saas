@@ -1,4 +1,4 @@
-import { Module } from '@nestjs/common';
+import { MiddlewareConsumer, Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
@@ -10,6 +10,7 @@ import { StationGroupModule } from './station-group/station-group.module';
 import { StationModule } from './station/station.module';
 import { StationConnectorsModule } from './station-connectors/station-connectors.module';
 import { AuthModule } from './auth/auth.module';
+import { ContextIdMiddleware } from './middleware/context.middleware';
 
 @Module({
   imports: [
@@ -25,4 +26,10 @@ import { AuthModule } from './auth/auth.module';
   controllers: [AppController],
   providers: [AppService],
 })
-export class AppModule {}
+export class AppModule {
+  configure(consumer: MiddlewareConsumer) {
+    consumer
+      .apply(ContextIdMiddleware)
+      .forRoutes('*');
+  }
+}

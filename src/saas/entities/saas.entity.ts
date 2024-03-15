@@ -19,6 +19,9 @@ export class Saas {
   @UpdateDateColumn()
   updatedAt: Date;
 
+  @Column({ unique: true })
+  host: string;
+
   @OneToMany(() => User, user => user.saas)
   users: User[];
 
