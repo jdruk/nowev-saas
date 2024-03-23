@@ -5,16 +5,7 @@ export const asyncLocalStorage = new AsyncLocalStorage();
 
 @Injectable()
 export class AsyncContextService {
-  static instance: AsyncContextService;
-
   constructor() {}
-
-  static getInstance(): AsyncContextService {
-    if (!AsyncContextService.instance) {
-        AsyncContextService.instance = new AsyncContextService();
-    }
-    return AsyncContextService.instance;
-  }
 
   setSaasId(saasId: string) {
     const store = asyncLocalStorage.getStore() as { saasId?: string };

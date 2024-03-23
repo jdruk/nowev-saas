@@ -13,7 +13,7 @@ export abstract class BaseAbstractRepostitory<T extends HasSaasId> implements Ba
 
     protected constructor(entity: Repository<T>) {
         this.entity = entity
-        this.asyncContextService = AsyncContextService.getInstance();
+        this.asyncContextService = new AsyncContextService();
     }
 
     public async save(data: DeepPartial<T>): Promise<T> {

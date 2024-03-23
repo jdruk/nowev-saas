@@ -34,3 +34,6 @@ generate_migration:
 
 migration_revert:
 	docker exec -it $(APP_NAME) npx ts-node ./node_modules/typeorm/cli.js migration:revert -d src/config/data.source.ts
+
+dev:
+	cp .env.example .env && docker-compose build && docker-compose up -d && make generate_migration NAME=BaseMigration && make migration_run && docker-compose up
