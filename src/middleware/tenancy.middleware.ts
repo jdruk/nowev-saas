@@ -1,26 +1,15 @@
-import {
-  HostComponentInfo,
-  ContextId,
-  ContextIdFactory,
-  ContextIdStrategy,
-} from '@nestjs/core';
-import { Request } from 'express';
+import { Injectable, NestMiddleware } from '@nestjs/common';
+import { Request, Response } from 'express';
+import { asyncLocalStorage, AsyncContextService } from '../common/async-context.service';
 
-const tenants = new Map<string, ContextId>();
+@Injectable()
+export class TenancyMiddleware implements NestMiddleware {
+  constructor(private asyncContextService: AsyncContextService) {}
 
-export class TenancyMiddleware implements ContextIdStrategy {
-  attach(contextId: ContextId, request: Request)  {
-    const tenantId = request.headers['x-tenant-id'] as string;
-    let tenantSubTreeId: ContextId;
-
-    if (tenants.has(tenantId)) {
-      tenantSubTreeId = tenants.get(tenantId);
-    } else {
-      tenantSubTreeId = ContextIdFactory.create();
-      tenants.set(tenantId, tenantSubTreeId);
-    }
-
-    return (info: HostComponentInfo) =>
-      info.isTreeDurable ? tenantSubTreeId : contextId;
+  use(req: Request, res: Response, next: () => void) {
+    asyncLocalStorage.run(new Map(), () => {
+      this.asyncContextService.setSaasId(req.headers['x-tenant-id'] as string);
+      next();
+    });
   }
 }
